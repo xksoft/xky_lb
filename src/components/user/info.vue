@@ -29,6 +29,7 @@
                 </Row>
             </div>
         </i-col>
+
         <i-col span="15" offset="1">
             <div class="info_right_top">
                 <h1>安全设置</h1>

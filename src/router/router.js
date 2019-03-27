@@ -4,6 +4,9 @@ import Home from '../views/Home.vue'
 // import info from '@/components/user/info'
 
 const info = () => import('@/components/user/info')
+const permission = () => import('@/components/user/permission')
+const upload = () => import('@/components/upload/uploadImg')
+const userRoot = () => import('@/components/user/userRoot')
 Vue.use(Router)
 
 export default new Router({
@@ -21,7 +24,22 @@ export default new Router({
           path: '/info',
           name: 'info',
           component: info
-        }
+        },
+        {
+          path: '/permission',
+          name: 'permission',
+          component: permission
+        },
+        {
+          path: '/upload',
+          name: 'upload',
+          component: upload
+        },
+        {
+          path: '/userRoot',
+          name: 'userRoot',
+          component:userRoot
+        },
       ]
     },
     {

@@ -1,4 +1,10 @@
 <style scoped>
+    a{
+    color: #c8d4e0
+    }
+    a:hover{
+    color: white;
+    }
     .layout{
         border: 1px solid #d7dde4;
         background: #f5f7f9;
@@ -7,16 +13,23 @@
         overflow: hidden;
     }
     .layout-header-bar{
-        background: #fff;
+        background: #0c0c0c;
         box-shadow: 0 1px 1px rgba(0,0,0,.1);
     }
-    .layout-logo-left{
-        width: 90%;
-        height: 30px;
-        background: #5b6270;
+    .layout-logo{
+        width: 120px;
+        height: 50px;
+        /* background: #001529; */
         border-radius: 3px;
-        margin: 15px auto;
+        float: left;
+        position: relative;
+        top: 6px;
+        left: 10px;
     }
+  .layout-logo img{
+      width: 105px;
+      height: 20px;
+  }
     .menu-icon{
         transition: all .3s;
     }
@@ -48,7 +61,7 @@
         vertical-align: middle;
         font-size: 22px;
     }
-  
+ 
 </style>
 <template>
     <div class="layout">
@@ -61,38 +74,47 @@
                         个人中心
                     </template>
                     <Menu-item name="1-1" ><router-link to="/info">账号管理</router-link></Menu-item>
-                    <Menu-item name="1-2">评论管理</Menu-item>
-                    <Menu-item name="1-3">举报管理</Menu-item>
+                    <Menu-item name="1-2"><router-link to="/permission">身份认证</router-link></Menu-item>
+                    <Menu-item name="1-3"><router-link to="/userRoot">账号权限</router-link></Menu-item>
                 </Submenu>
-                <Submenu name="2">
+                <!-- <Submenu name="2">
                     <template slot="title">
                         <Icon type="ios-people"></Icon>
-                        用户管理
+                        身份认证
                     </template>
                     <Menu-item name="2-1">新增用户</Menu-item>
                     <Menu-item name="2-2">活跃用户</Menu-item>
-                </Submenu>
+                </Submenu> -->
                 <Submenu name="3">
                     <template slot="title">
                         <Icon type="stats-bars"></Icon>
-                        统计分析
+                        授权码申请
                     </template>
                     <Menu-group title="使用">
                         <Menu-item name="3-1">新增和启动</Menu-item>
                         <Menu-item name="3-2">活跃分析</Menu-item>
                         <Menu-item name="3-3">时段分析</Menu-item>
                     </Menu-group>
-                    <Menu-group title="留存">
-                        <Menu-item name="3-4">用户留存</Menu-item>
-                        <Menu-item name="3-5">流失用户</Menu-item>
-                    </Menu-group>
+                   
+                </Submenu>
+                <Submenu name="4">
+                    <template slot="title">
+                        <Icon type="stats-bars"></Icon>
+                        授权码列表
+                    </template>
+                        <Menu-item name="4-1">新增和启动</Menu-item>
+                        <Menu-item name="4-2">活跃分析</Menu-item>
+                        <Menu-item name="4-3"><router-link to="/upload">图片上传</router-link></Menu-item>
                 </Submenu>
                 </Menu>
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: ' 0 50px'}" type="navicon-round" size="24"></Icon>
-                    这是头部
+                     <div class="layout-logo">
+                         <img src="../img/xky.svg" alt="" srcset="">
+                     </div>
+                    <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: ' 20px 50px',float:'right',color:'white'}" type="navicon-round" size="24"></Icon>
+
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '784px'}">
                       <router-view/>
