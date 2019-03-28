@@ -1,5 +1,11 @@
 <template>
-    <Table :columns="columns1" :data="data1"></Table>
+    <div>
+        <header style="margin:20px 0 20px 0">
+            <Icon type="ios-information" size="30"></Icon> 
+            <span data-radium="true" style="vertical-align: middle; margin-left: 14px; font-weight: 400; color: rgb(84, 110, 122); font-size: 16px;">账号权限</span>
+        </header>
+        <Table :columns="columns1" :data="data1"></Table>
+    </div>
 </template>
 <script>
     export default {

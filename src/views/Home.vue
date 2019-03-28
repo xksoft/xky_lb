@@ -13,9 +13,19 @@
         overflow: hidden;
     }
     .layout-header-bar{
-        background: #0c0c0c;
+        background: white;
         box-shadow: 0 1px 1px rgba(0,0,0,.1);
     }
+    .layout-nav{
+    width: 420px;
+    
+    float: right;
+}
+.layout-nav .ivu-menu-item{
+    display: inline;
+    margin-left: 30px;
+    /* color: black; */
+}
     .layout-logo{
         width: 120px;
         height: 50px;
@@ -24,11 +34,14 @@
         float: left;
         position: relative;
         top: 6px;
-        left: 10px;
+        left: 20px;
     }
-  .layout-logo img{
-      width: 105px;
-      height: 20px;
+    .ivu-layout-sider-children img{
+      width: 120px;
+      height: 50px;
+  }
+  .ivu-menu{
+      margin-top: 60px;
   }
     .menu-icon{
         transition: all .3s;
@@ -67,6 +80,9 @@
     <div class="layout">
         <Layout>
             <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed " :style="{background: '#001529'}">
+                <div class="layout-logo">
+                    <img src="../img/xky.svg" alt="" srcset="">
+                </div>
                 <Menu  theme="dark" width="auto" :class="menuitemClasses" accordion :style="{background: '#001529'}">
                     <Submenu name="1" :style="{background: '#001529'}">
                     <template slot="title">
@@ -110,11 +126,26 @@
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                     <div class="layout-logo">
-                         <img src="../img/xky.svg" alt="" srcset="">
-                     </div>
-                    <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: ' 20px 50px',float:'right',color:'white'}" type="navicon-round" size="24"></Icon>
+                     
+                    <!-- <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: ' 20px 50px',float:'right',color:'#001529'}" type="navicon-round" size="24"></Icon> -->
+                    <div class="layout-nav">
+                        <MenuItem name="1">
+                            <Icon type="ios-navigate"></Icon>
+                            Item 1
+                        </MenuItem>
+                        <MenuItem name="2">
+                            <Icon type="ios-keypad"></Icon>
+                            Item 2
+                        </MenuItem>
+                        <MenuItem name="3">
+                            <Icon type="ios-analytics"></Icon>
+                            Item 3
+                        </MenuItem>
+                        <MenuItem name="4">
+                                    <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
 
+                        </MenuItem>
+                    </div>
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '784px'}">
                       <router-view/>

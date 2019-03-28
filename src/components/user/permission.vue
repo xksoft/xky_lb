@@ -1,6 +1,6 @@
 <template>
     <div class="container"> 
-
+            
             <Steps :current="current">
                 <Step title="选择认证类型"></Step>
                 <Step title="填写认证信息"></Step>
@@ -49,9 +49,21 @@
             </Col>
         </Row>
         <Row v-else>
-            这是第三页
-            <Button type="primary" long @click="next">finish</Button>
-            <Button type="primary" long @click="last">上一步</Button>
+            <Card style="width:320px;margin:50px auto">
+                <div style="text-align:center">
+                    <h3>侠客云提醒您，请您再次确认信息无误后点击完成。谢谢。</h3>
+                </div>
+            </Card>
+
+            <div class="btn" style="width:200px;margin:50px auto">
+                 <Button type="primary" @click="success(true);next()">Success</Button>
+            
+                 <Button type="primary"  @click="last" style="margin-left:15px">上一步</Button>
+            </div>
+               
+          
+               
+           
         </Row>
 
     </div>
@@ -96,8 +108,8 @@
         },
         methods: {
             next () {
-                if (this.current == 2) {
-                    this.current = 0;
+                if (this.current == 3) {
+                    this.current = 3;
                 } else {
                     this.current += 1;
                 }
@@ -119,7 +131,10 @@
                         this.$Message.error('Fail!');
                     }
                 })
-            }
+            },
+             success () {
+                this.$Message.success('认证成功');
+            },
         }
     }
 </script>
@@ -138,5 +153,11 @@
     }
     .demo-split-pane{
         padding: 10px;
+    }
+    .ivu-notice-title{
+        margin-left: 50px!important;
+    }
+    .ivu-notice-icon{
+        margin-top: 3px;
     }
 </style>
