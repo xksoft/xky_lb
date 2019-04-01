@@ -56,7 +56,7 @@
             </Card>
 
             <div class="btn" style="width:200px;margin:50px auto">
-                 <Button type="primary" @click="success(true);next()">Success</Button>
+                 <Button type="primary" @click="success(true);next()">完成</Button>
             
                  <Button type="primary"  @click="last" style="margin-left:15px">上一步</Button>
             </div>

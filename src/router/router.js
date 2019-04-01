@@ -11,10 +11,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      redirect: 'info'
-    },
+    // {
+    //   path: '/',
+    //   redirect: 'info'
+    // },
     {
       path: '/',
       name: 'home',

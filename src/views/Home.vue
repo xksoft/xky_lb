@@ -1,31 +1,55 @@
 <style scoped>
+    html,body{
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
     a{
-    color: #c8d4e0
+    color: white;
     }
     a:hover{
     color: white;
     }
     .layout{
-        border: 1px solid #d7dde4;
+        /* border: 1px solid #d7dde4; */
         background: #f5f7f9;
         position: relative;
-        border-radius: 4px;
+        /* border-radius: 4px; */
         overflow: hidden;
+        width: 100%;
+        height: 100%
+    
+    }
+    .ivu-layout{
+        width: 100%;
+        height: 100%;
     }
     .layout-header-bar{
         background: white;
         box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        border-bottom: 1px solid rgba(93, 87,96,.1);
     }
     .layout-nav{
-    width: 420px;
-    
-    float: right;
-}
-.layout-nav .ivu-menu-item{
-    display: inline;
-    margin-left: 30px;
-    /* color: black; */
-}
+        width: 420px;
+        float: right;
+    }
+    .ivu-layout-content{
+        /* min-height: 870px; */
+        height: 100%;
+        color: #535353;
+        font-size: 14px;
+        padding: 20px;
+        background: #fbfbfb;
+        line-height: 36px;
+        
+    }
+    .layout-nav .ivu-menu-item{
+        display: inline;
+        margin-left: 30px;
+        /* color: black; */
+    }
     .layout-logo{
         width: 120px;
         height: 50px;
@@ -39,10 +63,10 @@
     .ivu-layout-sider-children img{
       width: 120px;
       height: 50px;
-  }
-  .ivu-menu{
-      margin-top: 60px;
-  }
+    }
+    .ivu-menu{
+        margin-top: 60px;
+    }
     .menu-icon{
         transition: all .3s;
     }
@@ -83,15 +107,15 @@
                 <div class="layout-logo">
                     <img src="../img/xky.svg" alt="" srcset="">
                 </div>
-                <Menu  theme="dark" width="auto" :class="menuitemClasses" accordion :style="{background: '#001529'}">
+                <Menu  theme="dark" width="auto" :class="menuitemClasses" active-name="activeName" :open-names="opens" accordion :style="{background: '#001529'}">
                     <Submenu name="1" :style="{background: '#001529'}">
                     <template slot="title">
                         <Icon type="person"></Icon>
                         个人中心
                     </template>
-                    <Menu-item name="1-1" ><router-link to="/info">账号管理</router-link></Menu-item>
-                    <Menu-item name="1-2"><router-link to="/permission">身份认证</router-link></Menu-item>
-                    <Menu-item name="1-3"><router-link to="/userRoot">账号权限</router-link></Menu-item>
+                    <router-link to="/info"><Menu-item name="1-1" >账号管理</Menu-item></router-link>
+                    <router-link to="/permission"><Menu-item name="1-2">身份认证</Menu-item></router-link>
+                    <router-link to="/userRoot"><Menu-item name="1-3">账号权限</Menu-item></router-link>
                 </Submenu>
                 <!-- <Submenu name="2">
                     <template slot="title">
@@ -147,7 +171,7 @@
                         </MenuItem>
                     </div>
                 </Header>
-                <Content :style="{margin: '20px', background: '#fff', minHeight: '784px'}">
+                <Content>
                       <router-view/>
                 </Content>
             </Layout>
@@ -160,7 +184,33 @@
         name: 'home',
         data () {
             return {
-                isCollapsed: false
+                isCollapsed: false,
+                activeName: '',
+                opens: []
+            }
+        },
+        created() {
+            // 初始化菜单
+            this.activeName = this.$route.name
+            // this.menus = menu.menusList
+            // this.menus.forEach((item) => {
+            //     if (item.children) {
+            //         this.opens.push(item.name)
+            //     }
+            // })
+        },
+        watch: {
+            // 监听路由变化 改变显示
+            $route(newValue) {
+                if (!this.opens.includes(newValue.name)) {
+                    this.opens.push(newValue.name)
+                }
+                // 异步更新dom
+                this.$nextTick(() => {
+                    this.activeName = newValue.name
+                    // this.$refs.menu.updateActiveName()
+                    // this.$refs.menu.updateOpened()
+                })
             }
         },
         computed: {
@@ -180,7 +230,11 @@
         methods: {
             collapsedSider () {
                 this.$refs.side1.toggleCollapse();
-            }
+            },
+            // 监听并改变菜单合集
+            onOpenChange(value) {
+                this.opens = value
+            },
         }
     }
 </script>

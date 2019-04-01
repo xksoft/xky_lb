@@ -9,15 +9,23 @@ export default {
 }
 </script>
 <style lang="less">
-#app{
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 14px;
- 
+
+.size {
+    width: 100%;
+    height: 100%;
 }
-a{
-  color: #c8d4e0
+
+html, body {
+    .size;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
-a:hover{
-  color: white;
-}
+
+#app {
+    .size;
+    border: none;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    }
 </style>
