@@ -101,50 +101,12 @@
 <template>
     <div class="layout">
         <Layout>
-            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed " :style="{background: '#001529'}">
+            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78"  :style="{background: '#001529'}">
                 <div class="layout-logo">
                     <img src="../img/xky.svg" alt="" srcset="">
                 </div>
-                <Menu  theme="dark" width="auto" :class="menuitemClasses" active-name="activeName" :open-names="opens" accordion :style="{background: '#001529'}">
-                    <Submenu name="1" :style="{background: '#001529'}">
-                    <template slot="title">
-                        <Icon type="person"></Icon>
-                        个人中心
-                    </template>
-                    <router-link to="/info" title="账号管理"><Menu-item name="1-1" >账号管理</Menu-item></router-link>
-                    <router-link to="/permission"><Menu-item name="1-2">身份认证</Menu-item></router-link>
-                    <router-link to="/userRoot"><Menu-item name="1-3">账号权限</Menu-item></router-link>
-                </Submenu>
-                <!-- <Submenu name="2">
-                    <template slot="title">
-                        <Icon type="ios-people"></Icon>
-                        身份认证
-                    </template>
-                    <Menu-item name="2-1">新增用户</Menu-item>
-                    <Menu-item name="2-2">活跃用户</Menu-item>
-                </Submenu> -->
-                <Submenu name="3">
-                    <template slot="title">
-                        <Icon type="stats-bars"></Icon>
-                        授权码申请
-                    </template>
-                    <Menu-group title="使用">
-                        <Menu-item name="3-1">新增和启动</Menu-item>
-                        <Menu-item name="3-2">活跃分析</Menu-item>
-                        <Menu-item name="3-3">时段分析</Menu-item>
-                    </Menu-group>
-                   
-                </Submenu>
-                <Submenu name="4">
-                    <template slot="title">
-                        <Icon type="stats-bars"></Icon>
-                        授权码列表
-                    </template>
-                        <Menu-item name="4-1">新增和启动</Menu-item>
-                        <Menu-item name="4-2">活跃分析</Menu-item>
-                        <Menu-item name="4-3"><router-link to="/upload">图片上传</router-link></Menu-item>
-                </Submenu>
-                </Menu>
+                <!-- 侧栏组件 -->
+                <Menu></Menu>
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
@@ -181,11 +143,13 @@
 
 <script>
 import Breadcrumb from '../components/subcomponents/Breadcrumb'
+import Menu from '../components/subcomponents/Menu'
+
     export default {
         name: 'home',
         data () {
             return {
-                isCollapsed: false,
+                
                 activeName: '',
                 opens: [],
                 levelList:[]
@@ -193,66 +157,30 @@ import Breadcrumb from '../components/subcomponents/Breadcrumb'
         },
         created() {
             // 初始化菜单
-            this.getBreadcrumb()
+            this.getBreadcrumb(),
 
             this.activeName = this.$route.name
-            
-            // this.activeName = this.$route.title
-            //    this.title=
-
-            // this.menus = menu.menusList
-            // this.menus.forEach((item) => {
-            //     if (item.children) {
-            //         this.opens.push(item.name)
-            //     }
-            // })
         },
         watch: {
             // 监听路由变化 改变显示
-            $route(newValue) {
-                if (!this.opens.includes(newValue.name)) {
-                    this.opens.push(newValue.name)
-                }
-                // 异步更新dom
-                this.$nextTick(() => {
-                    this.activeName = newValue.name
-                    // this.$refs.menu.updateActiveName()
-                    // this.$refs.menu.updateOpened()
-                })
+            $route() {
+                
                 this.getBreadcrumb()
 
             },
         },
         computed: {
-            rotateIcon () {
-                return [
-                    'menu-icon',
-                    this.isCollapsed ? 'rotate-icon' : ''
-                ];
-            },
-            menuitemClasses () {
-                return [
-                    'menu-item',
-                    this.isCollapsed ? 'collapsed-menu' : ''
-                ]
-            }
+           
         },
         methods: {
-            collapsedSider () {
-                this.$refs.side1.toggleCollapse();
-            },
-            // 监听并改变菜单合集
-            onOpenChange(value) {
-                this.opens = value
-            },
             getBreadcrumb(){
                 this.levelList=this.$route.meta.title
-
             }
 
         },
         components: {
-            Breadcrumb
+            Breadcrumb,
+            Menu
         }
     }
 </script>

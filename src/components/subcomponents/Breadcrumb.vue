@@ -12,6 +12,7 @@
                 
             }
         },
+       
         props: ['levelList'],
 
     }
