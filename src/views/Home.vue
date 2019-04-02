@@ -13,14 +13,11 @@
     color: white;
     }
     .layout{
-        /* border: 1px solid #d7dde4; */
         background: #f5f7f9;
         position: relative;
-        /* border-radius: 4px; */
         overflow: hidden;
         width: 100%;
         height: 100%
-    
     }
     .ivu-layout{
         width: 100%;
@@ -31,12 +28,15 @@
         box-shadow: 0 1px 1px rgba(0,0,0,.1);
         border-bottom: 1px solid rgba(93, 87,96,.1);
     }
+    .ivu-breadcrumb{
+        display: inline;
+        margin-left: 20px;
+    }
     .layout-nav{
         width: 420px;
         float: right;
     }
     .ivu-layout-content{
-        /* min-height: 870px; */
         height: 100%;
         color: #535353;
         font-size: 14px;
@@ -48,12 +48,10 @@
     .layout-nav .ivu-menu-item{
         display: inline;
         margin-left: 30px;
-        /* color: black; */
     }
     .layout-logo{
         width: 120px;
         height: 50px;
-        /* background: #001529; */
         border-radius: 3px;
         float: left;
         position: relative;
@@ -113,7 +111,7 @@
                         <Icon type="person"></Icon>
                         个人中心
                     </template>
-                    <router-link to="/info"><Menu-item name="1-1" >账号管理</Menu-item></router-link>
+                    <router-link to="/info" title="账号管理"><Menu-item name="1-1" >账号管理</Menu-item></router-link>
                     <router-link to="/permission"><Menu-item name="1-2">身份认证</Menu-item></router-link>
                     <router-link to="/userRoot"><Menu-item name="1-3">账号权限</Menu-item></router-link>
                 </Submenu>
@@ -150,9 +148,11 @@
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                     
+                        <!-- 面包屑组件 -->
+                        <Breadcrumb :levelList="levelList"></Breadcrumb>
                     <!-- <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: ' 20px 50px',float:'right',color:'#001529'}" type="navicon-round" size="24"></Icon> -->
                     <div class="layout-nav">
+
                         <MenuItem name="1">
                             <Icon type="ios-navigate"></Icon>
                             Item 1
@@ -180,18 +180,26 @@
 </template>
 
 <script>
+import Breadcrumb from '../components/subcomponents/Breadcrumb'
     export default {
         name: 'home',
         data () {
             return {
                 isCollapsed: false,
                 activeName: '',
-                opens: []
+                opens: [],
+                levelList:[]
             }
         },
         created() {
             // 初始化菜单
+            this.getBreadcrumb()
+
             this.activeName = this.$route.name
+            
+            // this.activeName = this.$route.title
+            //    this.title=
+
             // this.menus = menu.menusList
             // this.menus.forEach((item) => {
             //     if (item.children) {
@@ -211,7 +219,9 @@
                     // this.$refs.menu.updateActiveName()
                     // this.$refs.menu.updateOpened()
                 })
-            }
+                this.getBreadcrumb()
+
+            },
         },
         computed: {
             rotateIcon () {
@@ -235,6 +245,14 @@
             onOpenChange(value) {
                 this.opens = value
             },
+            getBreadcrumb(){
+                this.levelList=this.$route.meta.title
+
+            }
+
+        },
+        components: {
+            Breadcrumb
         }
     }
 </script>
