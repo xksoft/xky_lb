@@ -21,6 +21,7 @@ import {menu} from '../../data/menu'
     export default {
         data () {
             return {
+                activeName: '',
                 menus:[],
                 opens:[]
             }
@@ -28,13 +29,13 @@ import {menu} from '../../data/menu'
         created(){
             this.activeName = this.$route.name
             this.menus = menu.menusList
-            console.log(this.menus)
+            // console.log(this.menus)
             this.menus.forEach((item) => {
                 if (item.children) {
                     this.opens.push(item.name)
                 }
             })
-            console.log(this.opens)
+            // console.log(this.opens)
 
         },
          watch: {

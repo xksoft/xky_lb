@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header style="margin:20px 0 20px 0">
+       <header style="margin-bottom:20px">
             <Icon type="ios-information" size="30"></Icon> 
             <span data-radium="true" style="vertical-align: middle; margin-left: 14px; font-weight: 400; color: rgb(84, 110, 122); font-size: 16px;">账号权限</span>
         </header>
@@ -63,3 +63,6 @@
         }
     }
 </script>
+<style lang="less" scoped>
+
+</style>

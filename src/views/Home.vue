@@ -111,7 +111,8 @@
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
                         <!-- 面包屑组件 -->
-                        <Breadcrumb :levelList="levelList"></Breadcrumb>
+                        <!-- <Breadcrumb :levelList="levelList"></Breadcrumb> -->
+                        <Breadcrumb></Breadcrumb>
                     <!-- <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: ' 20px 50px',float:'right',color:'#001529'}" type="navicon-round" size="24"></Icon> -->
                     <div class="layout-nav">
 
@@ -150,34 +151,34 @@ import Menu from '../components/subcomponents/Menu'
         data () {
             return {
                 
-                activeName: '',
-                opens: [],
-                levelList:[]
+               
+                // levelList:[]
             }
         },
-        created() {
-            // 初始化菜单
-            this.getBreadcrumb(),
+        // created() {
+        //     // 初始化菜单
+        //     this.getBreadcrumb(),
 
-            this.activeName = this.$route.name
-        },
-        watch: {
-            // 监听路由变化 改变显示
-            $route() {
+        //     this.activeName = this.$route.name
+        // },
+        // watch: {
+        //     // 监听路由变化 改变显示
+        //     $route() {
                 
-                this.getBreadcrumb()
+        //         this.getBreadcrumb()
 
-            },
-        },
-        computed: {
+        //     },
+        // },
+        // computed: {
            
-        },
-        methods: {
-            getBreadcrumb(){
-                this.levelList=this.$route.meta.title
-            }
+        // },
+        // methods: {
+        //     getBreadcrumb(){
+        //         this.levelList=this.$route.meta.title
+                
+        //     }
 
-        },
+        // },
         components: {
             Breadcrumb,
             Menu

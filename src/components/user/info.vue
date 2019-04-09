@@ -35,15 +35,15 @@
                 <h2>安全设置</h2>
                 <Row>
                     <i-col span="4"  >绑定手机</i-col>
-                    <i-col span="18">156115151515</i-col>
+                    <i-col span="18">1561515151515<router-link to="/info/phone" style="margin-left:10px"><Icon type="ios-create-outline" size="24" color="black"/></router-link></i-col>
                 </Row>
                 <Row>
                     <i-col span="4"  >绑定邮箱</i-col>
-                    <i-col span="18">蚊子</i-col>
+                    <i-col span="18">123123213@163.com<router-link to="/info/email" style="margin-left:10px"><Icon type="ios-create-outline" size="24" color="black"/></router-link></i-col>
                 </Row>
                 <Row>
                     <i-col span="4"  >登陆密码</i-col>
-                    <i-col span="18">男</i-col>
+                    <i-col span="18">a</i-col>
                 </Row>
                 <Row>
                     <i-col span="4"  >第三方账号</i-col>

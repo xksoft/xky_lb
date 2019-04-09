@@ -7,27 +7,47 @@ const info = () => import('@/components/user/info')
 const permission = () => import('@/components/user/permission')
 const upload = () => import('@/components/upload/uploadImg')
 const userRoot = () => import('@/components/user/userRoot')
+const email = () => import('@/components/user/bindnew/email')
+const phone = () => import('@/components/user/bindnew/phone')
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   redirect: 'info'
-    // },
+    {
+      path: '/',
+      redirect: 'info'
+    },
     {
       path: '/',
       name: 'home',
       component: Home,
-      // meta: { title: "首页" },
-
+      meta: { title: "个人中心" },
       children:[
         {
           path: '/info',
           name: 'info',
           component: info,
-          meta: { title: "账号管理" }
-
+          meta: { title: "账号管理" },
+          // children:[
+          //   {
+          //     path: '/info/email',
+          //     name: 'email',
+          //     component: email,
+          //     meta: { title: "绑定邮箱" },
+          //   }
+          // ]
+        },
+        {
+          path: '/info/email',
+          name: 'email',
+          component: email,
+          meta: { title: "账号管理 / 修改邮箱" }
+        },
+        {
+          path: '/info/phone',
+          name: 'phone',
+          component: phone,
+          meta: { title: "账号管理 / 修改手机" }
         },
         {
           path: '/permission',
