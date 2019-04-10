@@ -10,22 +10,25 @@ export default {
 </script>
 <style lang="less">
 
-.size {
-    width: 100%;
-    height: 100%;
-}
+
 
 html, body {
-    .size;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;
 }
 
 #app {
-    .size;
+    width: 100%;
+    height: 100%;
     border: none;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-size: 14px;
     }
+    
+.ivu-select-dropdown{
+    width: 300px!important;
+}
 </style>

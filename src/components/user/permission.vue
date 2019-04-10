@@ -48,18 +48,23 @@
             </Form>
             </Col>
         </Row>
-        <Row v-else>
-            <Card style="width:320px;margin:50px auto">
-                <div style="text-align:center">
-                    <h3>侠客云提醒您，请您再次确认信息无误后点击完成。谢谢。</h3>
-                </div>
-            </Card>
+        <Row v-else >
+           <Form :model="formItem" :label-width="100" class="box" >
+        
+           
+                <Row >
+                    <h1 style="">认证成功</h1>
+                </Row>
+                <!-- <Icon type="md-desktop" size="80"/> -->
+               <Icon  type="ios-checkmark-circle-outline" size="240"/>
 
-            <div class="btn" style="width:200px;margin:50px auto">
-                 <Button type="primary" @click="success(true);next()">完成</Button>
             
-                 <Button type="primary"  @click="last" style="margin-left:15px">上一步</Button>
-            </div>
+            <FormItem>
+                <Button type="primary"  @click="goInfo" style="margin-left: -90px;">返回账号管理</Button>
+            
+            </FormItem>
+
+        </Form>
                
           
                
@@ -121,7 +126,9 @@
                     this.current -=1;
                 }
             },
-           
+            goInfo(){
+            this.$router.replace('/info','phone')
+        },
              handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
@@ -159,5 +166,13 @@
     }
     .ivu-notice-icon{
         margin-top: 3px;
+    }
+    .box{
+        width: 540px;
+        padding: 0 120px 0 0;
+        margin: 80px auto;
+        text-align: center;
+        font-size: 14px;
+        color: #7c7e7d;
     }
 </style>

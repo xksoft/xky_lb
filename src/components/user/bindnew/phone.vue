@@ -63,7 +63,7 @@
                 <!-- <Icon type="md-desktop" size="80"/> -->
                <Icon type="ios-checkmark-circle-outline" size="240"/>
 
-            </FormItem>
+            
             <FormItem>
                 <Button type="primary"  @click="goInfo" style=" margin-left: -30px;">返回账号管理</Button>
             
