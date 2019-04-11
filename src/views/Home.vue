@@ -150,35 +150,8 @@ import Menu from '../components/subcomponents/Menu'
         name: 'home',
         data () {
             return {
-                
-               
-                // levelList:[]
             }
         },
-        // created() {
-        //     // 初始化菜单
-        //     this.getBreadcrumb(),
-
-        //     this.activeName = this.$route.name
-        // },
-        // watch: {
-        //     // 监听路由变化 改变显示
-        //     $route() {
-                
-        //         this.getBreadcrumb()
-
-        //     },
-        // },
-        // computed: {
-           
-        // },
-        // methods: {
-        //     getBreadcrumb(){
-        //         this.levelList=this.$route.meta.title
-                
-        //     }
-
-        // },
         components: {
             Breadcrumb,
             Menu

@@ -18,18 +18,12 @@
                 <Row>
                     <i-col span="4"  >昵称</i-col>
                     <i-col span="18">
-                        <span v-show="flagText">蚊子<Icon type="ios-create-outline" size="24" color="black" @click="show" style="margin-left:10px"/></span>
-                         <Form v-show="flagName" ref="formInline" label-position="left"	 :model="formInline" :rules="ruleInline" :label-width="50" inline>
-                            <FormItem prop="user">
-                                <Input type="text" v-model="formInline.user" placeholder="昵称">
-                                </Input>
-                            </FormItem>
-                            
-                            <FormItem>
-                                <Button type="primary" @click="handleSubmit('formInline')">保存</Button>
-                                <Button  @click="show">取消</Button>
-                            </FormItem>
-                        </Form>
+                        <span v-show="flagText">{{user}}<Icon type="ios-create-outline" size="24" color="black" @click="showName" style="margin-left:10px"/></span>
+                        <div v-show="flagName">
+                            <Input v-model="user" placeholder="请输入开发者昵称" style="width: 140px" />
+                            <Button  @click="showName" style="margin:0 15px">取消</Button>
+                            <Button type="primary"  @click="showName();success()">保存</Button>
+                        </div>
                     </i-col>
                 </Row>
                 <Row>
@@ -49,8 +43,7 @@
                     <i-col span="18">
                         <span v-show="DateFlagText">{{birthday}}<Icon type="ios-create-outline" size="24" color="black" @click="showDate" style="margin-left:10px"/></span></i-col>
                         <div class="dateBox" v-show="flagDate" >
-                            <DatePicker @on-change="getBirthday"   v-model="birthday" type="date" format="yyyy-MM-dd"  placeholder="Select date" placement="bottom" style="width: 150px"></DatePicker>
-                
+                            <DatePicker @on-change="getBirthday"   :value="birthday" type="date" format="yyyy-MM-dd"  placeholder="Select date" placement="bottom" style="width: 150px"></DatePicker>
                             <Button  @click="showDate" style="margin:0 15px">取消</Button>
                             <!-- <Button type="primary" @click="getBirthday">保存</Button> -->
                             <Button type="primary"  @click="showDate();success()">保存</Button>
@@ -103,29 +96,34 @@
                 </Row>
                 <Row>
                     <i-col span="4"  >第三方账号</i-col>
-                    <i-col span="18">1999-66-66</i-col>
+                    <i-col span="18">
+                        <span class="iconfont">&#xe601;</span>
+                        <span class="iconfont">&#xe65f;</span>
+                        <a href="javascript:void(0)"><span class="iconfont">&#xe6a0;</span></a>
+                        <span class="iconfont">&#xe653;</span>
+                    </i-col>
                 </Row>
             
                 <h2 style="border-top: 1px solid #e1e8ed;margin-right:30px;padding-top:30px;">开发者信息</h2>
                 <Row>
                     <i-col span="4"  >开发者类型</i-col>
-                    <i-col span="18">个人开发者</i-col>
+                    <i-col span="18">个人开发者<a href="#" @click="goPermission()" style="margin-left:16px">开发者认证</a></i-col>
                 </Row>
                 <Row>
                     <i-col span="4"  >开发者姓名</i-col>
-                    <i-col span="18"><span v-show="UserFlagText">{{name}}<Icon type="ios-create-outline" size="24" color="black" @click="showName" style="margin-left:10px"/></span></i-col>
+                    <i-col span="18"><span v-show="UserFlagText">{{name}}<Icon type="ios-create-outline" size="24" color="black" @click="showUser" style="margin-left:10px"/></span></i-col>
                     <div v-show="flagUser">
-                        <Input v-model="name" placeholder="Enter something..." style="width: 300px" />
-                        <Button  @click="showName" style="margin:0 15px">取消</Button>
+                        <Input v-model="name" placeholder="请输入开发者姓名" style="width: 300px" />
+                        <Button  @click="showUser" style="margin:0 15px">取消</Button>
                             <!-- <Button type="primary" @click="getBirthday">保存</Button> -->
-                        <Button type="primary"  @click="showName();success()">保存</Button>
+                        <Button type="primary"  @click="showUser();success()">保存</Button>
                     </div>
                 </Row>
                 <Row>
                     <i-col span="4"  >个人主页</i-col>
                     <i-col span="18"><span v-show="IndexFlagText">{{myIndex}}<Icon type="ios-create-outline" size="24" color="black" @click="showIndex" style="margin-left:10px"/></span></i-col>
                     <div v-show="flagIndex">
-                        <Input v-model="myIndex" placeholder="Enter something..." style="width: 300px" />
+                        <Input v-model="myIndex" placeholder="请输入个人主页" style="width: 300px" />
                         <Button  @click="showIndex" style="margin:0 15px">取消</Button>
                             <!-- <Button type="primary" @click="getBirthday">保存</Button> -->
                         <Button type="primary"  @click="showIndex();success()">保存</Button>
@@ -135,7 +133,7 @@
                     <i-col span="4"  >个人简介</i-col>
                     <i-col span="18"><span v-show="IntroduceFlagText">{{myIntroduce}}<Icon type="ios-create-outline" size="24" color="black" @click="showIntroduce" style="margin-left:10px"/></span></i-col>
                     <div v-show="flagIntroduce">
-                        <Input v-model="myIntroduce" placeholder="Enter something..." style="width: 300px" />
+                        <Input v-model="myIntroduce" placeholder="请输入个人简介" style="width: 300px" />
                         <Button  @click="showIntroduce" style="margin:0 15px">取消</Button>
                             <!-- <Button type="primary" @click="getBirthday">保存</Button> -->
                         <Button type="primary"  @click="showIntroduce();success()">保存</Button>
@@ -174,11 +172,6 @@
                     callback();
                 }
             };
-            const validateUserCheck= (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('昵称不能为空'));
-                }
-            };
             return {
                 modal1: false,
                  flagName:false,
@@ -193,6 +186,7 @@
                 flagIntroduce:false,
                 IndexFlagText:true,
                 flagIndex:false,
+                user: '蚊子001',
                  sex:'未设置',
                  birthday:"未设置",
                  name:'蚊子',
@@ -202,9 +196,6 @@
                     oldPasswd: '',
                     passwd: '',
                     passwdCheck: '',
-                    age: '',
-                   
-                   
                 },
                  ruleCustom: {
                      oldPasswd:[
@@ -218,21 +209,11 @@
                     ],
                   
                 },
-                formInline:{
-                    user: '',
-                },
-                ruleInline: {
-                    user: [
-                        {   validator: validateUserCheck, trigger: 'blur' }
-                    ],
-                }
+                
             }
         },
         methods: {
-            // ok () {
-            //     this.$Message.info('Clicked ok');
-            // },
-            show(){
+            showName(){
                 this.flagName=!this.flagName;
                 this.flagText=!this.flagText;
             },
@@ -251,7 +232,7 @@
             getBirthday(date){
                 this.birthday=date;       
             },
-            showName(){
+            showUser(){
                 this.flagUser=!this.flagUser;
                 this.UserFlagText=!this.UserFlagText;
             },
@@ -264,7 +245,7 @@
                 this.IndexFlagText=!this.IndexFlagText;
             },
              success () {
-                this.$Message.success('This is a success tip');
+                this.$Message.success('保存成功');
                                
 
             },
@@ -282,6 +263,9 @@
             },
             handleReset (name) {
                 this.$refs[name].resetFields();
+            },
+            goPermission(){
+                this.$router.replace('permission','info')
             }
            
         
@@ -289,10 +273,31 @@
     }
 </script>
 <style lang="less" scoped>
+// 第三方登录图标
+@font-face {
+  font-family: 'iconfont';  /* project id 1107003 */
+  src: url('//at.alicdn.com/t/font_1107003_a48blj5wplm.eot');
+  src: url('//at.alicdn.com/t/font_1107003_a48blj5wplm.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1107003_a48blj5wplm.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1107003_a48blj5wplm.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1107003_a48blj5wplm.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1107003_a48blj5wplm.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 30px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    margin: 4px 10px 0 0;
+    border-radius: 50%;
+    background: #f2f6fa;
+  cursor: pointer;
+}
+
+
 .info_left{
-    // border-right: 1px solid rgba(93, 87,96,.1);
     margin: 30px 0 0 30px;
-    // background: #FAFBFC;
     img{
         width: 100px;
         height: 100px;
@@ -315,7 +320,6 @@
 }
 .bor-left{
     border-left: 1px solid rgba(93, 87,96,.2);
-    // padding-left: 30px;
     background: white;
 
 }

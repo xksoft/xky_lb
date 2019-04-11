@@ -25,10 +25,6 @@
         methods: {
             getBreadcrumb(){
                 this.leveList = this.$route.meta.title
-                
-
-                 
-
         },
         }
     }

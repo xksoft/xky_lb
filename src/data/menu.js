@@ -36,12 +36,12 @@ export let menu = {
                 },
             ]
         },
-        {
-            title: '账单',
-            name: 'wqeqw',
-            id: '006',
-            path: '/',
-        }
+        // {
+        //     title: '账单',
+        //     name: 'wqeqw',
+        //     id: '006',
+        //     path: '/',
+        // }
       
     ]
 }
