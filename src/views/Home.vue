@@ -125,8 +125,8 @@
                             Item 2
                         </MenuItem>
                         <MenuItem name="3">
-                            <Icon type="ios-analytics"></Icon>
-                            Item 3
+                            <!-- <router-link tag="a" target="_blank" to="http://www.baidu.com" style="color:#657180">开发文档</router-link> -->
+                            <a href="http://www.baidu.com" target="_blank" style="color:#657180" >开发文档</a>
                         </MenuItem>
                         <MenuItem name="4">
                                     <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />

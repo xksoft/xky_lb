@@ -19,8 +19,9 @@
                     <i-col span="4"  >昵称</i-col>
                     <i-col span="18">
                         <span v-show="flagText">{{user}}<Icon type="ios-create-outline" size="24" color="black" @click="showName" style="margin-left:10px"/></span>
+                        <!-- <span v-show="flagText" :value="user"><Icon type="ios-create-outline" size="24" color="black" @click="showName" style="margin-left:10px"/></span> -->
                         <div v-show="flagName">
-                            <Input v-model="user" placeholder="请输入开发者昵称" style="width: 140px" />
+                            <Input v-model="user" name="user" value="user" placeholder="请输入开发者昵称" style="width: 140px" />
                             <Button  @click="showName" style="margin:0 15px">取消</Button>
                             <Button type="primary"  @click="showName();success()">保存</Button>
                         </div>
@@ -174,25 +175,25 @@
             };
             return {
                 modal1: false,
-                 flagName:false,
-                 flagSex:false,
-                 flagText:true,
-                 SexFlagText:true,
-                 DateFlagText:true,
-                 flagDate:false,
-                 flagUser:false,
-                 UserFlagText:true,
+                flagName:false,
+                flagSex:false,
+                flagText:true,
+                SexFlagText:true,
+                DateFlagText:true,
+                flagDate:false,
+                flagUser:false,
+                UserFlagText:true,
                 IntroduceFlagText:true,
                 flagIntroduce:false,
                 IndexFlagText:true,
                 flagIndex:false,
-                user: '蚊子001',
-                 sex:'未设置',
-                 birthday:"未设置",
-                 name:'蚊子',
-                 myIndex:'未设置',
-                 myIntroduce:'未设置',
-                 formCustom: {
+                user: '蚊子002',
+                sex:'未设置',
+                birthday:"未设置",
+                name:'蚊子',
+                myIndex:'未设置',
+                myIntroduce:'未设置',
+                formCustom: {
                     oldPasswd: '',
                     passwd: '',
                     passwdCheck: '',
@@ -212,10 +213,12 @@
                 
             }
         },
+
         methods: {
             showName(){
                 this.flagName=!this.flagName;
                 this.flagText=!this.flagText;
+                
             },
             showSex(){
                 this.SexFlagText=!this.SexFlagText;
@@ -224,6 +227,7 @@
             showDate(){
                 this.DateFlagText=!this.DateFlagText;
                 this.flagDate=!this.flagDate;
+             
             },
             getSex(value){
                 this.sex=value;
@@ -235,6 +239,7 @@
             showUser(){
                 this.flagUser=!this.flagUser;
                 this.UserFlagText=!this.UserFlagText;
+                
             },
             showIntroduce(){
                 this.flagIntroduce=!this.flagIntroduce;
@@ -246,7 +251,7 @@
             },
              success () {
                 this.$Message.success('保存成功');
-                               
+                // console.log(this.user)
 
             },
             cancel () {
@@ -269,7 +274,9 @@
             }
            
         
-        }
+        },
+        
+            
     }
 </script>
 <style lang="less" scoped>
