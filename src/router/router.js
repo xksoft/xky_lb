@@ -22,16 +22,16 @@ export default new Router({
       redirect: 'info'
     },
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
-      meta: { title: "个人中心" },
+      meta: { title: "首页" },
       children:[
         {
           path: '/info',
           name: 'info',
           component: info,
-          meta: { title: "账号管理" }
+          meta: { title: "个人中心 / 账号管理" },
         },
         {
           path: '/info/email',
@@ -49,7 +49,7 @@ export default new Router({
           path: '/permission',
           name: 'permission',
           component: permission,
-          meta: { title: "身份认证" }
+          meta: { title: "个人中心 / 身份认证" }
 
         },
         {
@@ -63,45 +63,52 @@ export default new Router({
           path: '/userRoot',
           name: 'userRoot',
           component:userRoot,
-          meta: { title: "账号权限" }
+          meta: { title: "个人中心 / 账号权限" }
 
         },
         {
-          path: '/topic_verify',
+          path: '/upload',
+          name: 'upload',
+          meta: { title: "上传图片" },
+          component: upload
+        },
+        // {
+        //   path: '/topic',
+        //   name: 'topic',
+        //   meta: { title: "帖子管理" },
+         
+        //   children:[
+        //     {
+        //       path: '/topic/topic_verify',
+        //       name: 'topic_verify',
+        //       component: topic_verify,
+        //       meta: { title: "帖子审核" },
+        //     },
+        //     {
+        //       path: '/topic/topic_settop',
+        //       name: 'topic_settop',
+        //       component: topic_settop,
+        //       meta: { title: "全部帖子" },
+        //     },
+        //   ]
+          
+        // },
+        {
+          path: '/topic/topic_verify',
           name: 'topic_verify',
           component: topic_verify,
-          meta: { title: "帖子审核" },
+          meta: { title: "帖子管理 / 帖子审核" },
         },
         {
-          path: '/topic_settop',
+          path: '/topic/topic_settop',
           name: 'topic_settop',
           component: topic_settop,
-          meta: { title: "全部帖子" },
+          meta: { title: "帖子管理 / 全部帖子" },
         },
-      
       ]
     },
-    // {
-    //   path: '/topic',
-    //   name: 'topic',
-    //   meta: { title: "帖子管理" },
-     
-    //   children:[
-    //     {
-    //       path: '/topic/topic_verify',
-    //       name: 'topic_verify',
-    //       component: topic_verify,
-    //       meta: { title: "帖子审核" },
-    //     },
-    //     {
-    //       path: '/topic/topic_settop',
-    //       name: 'topic_settop',
-    //       component: topic_settop,
-    //       meta: { title: "全部帖子" },
-    //     },
-    //   ]
-      
-    // },
+   
+   
     {
       path: '/about',
       name: 'about',
@@ -109,6 +116,7 @@ export default new Router({
 
       component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
     },
+    
     
   ]
 })

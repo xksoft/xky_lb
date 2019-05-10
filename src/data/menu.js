@@ -28,6 +28,13 @@ export let menu = {
                     // icon: 'ios-contact',
                     id: '005'
                 },
+                // {
+                //     title: '上传图片',
+                //     name: 'upload',
+                //     id: '009',
+                //     path: '/upload',
+                // }
+                
             ]
         },
         {
@@ -39,20 +46,20 @@ export let menu = {
                 {
                     title: '帖子审核',
                     name: 'topic_verify',
-                    path: '/topic_verify',
+                    path: '/topic/topic_verify',
                     // icon: 'ios-contact',
                     id: '007'
                 },
                 {
                     title: '全部帖子',
                     name: 'topic_settop',
-                    path: '/topic_settop',
+                    path: '/topic/topic_settop',
                     // icon: 'ios-contact',
                     id: '008'
                 },
             ]
-        }
-      
+        },
+        
     ]
 }
 

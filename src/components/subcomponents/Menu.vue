@@ -30,19 +30,21 @@ import {menu} from '../../data/menu'
             this.activeName = this.$route.name
             this.menus = menu.menusList
             // console.log(this.menus)
-            this.menus.forEach((item) => {
-                if (item.children) {
-                    this.opens.push(item.name)
-                }
-            })
+            // this.menus.forEach((item) => {
+            //     if (item.children) {
+            //         this.opens.push(item.name)
+            //     }
+            // })
             // console.log(this.opens)
 
         },
          watch: {
             // 监听路由变化 改变显示
             $route(newValue) {
+                console.log(newValue)
                 if (!this.opens.includes(newValue.name)) {
                     this.opens.push(newValue.name)
+                    
                 }
                 // 异步更新dom
                 this.$nextTick(() => {
