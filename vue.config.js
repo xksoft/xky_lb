@@ -6,7 +6,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-    publicPath: isProd ? '/' : 'http://192.168.1.192:8080/',
+    publicPath: isProd ? '/' : 'http://192.168.1.98:8080/',
 
     chainWebpack: config => {
         config.resolve.alias
