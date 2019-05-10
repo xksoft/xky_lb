@@ -9,6 +9,10 @@ const upload = () => import('@/components/upload/uploadImg')
 const userRoot = () => import('@/components/user/userRoot')
 const email = () => import('@/components/user/bindnew/email')
 const phone = () => import('@/components/user/bindnew/phone')
+const topic_settop = () => import('@/components/topic/topic_settop')
+const topic_verify = () => import('@/components/topic/topic_verify')
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,15 +31,7 @@ export default new Router({
           path: '/info',
           name: 'info',
           component: info,
-          meta: { title: "账号管理" },
-          // children:[
-          //   {
-          //     path: '/info/email',
-          //     name: 'email',
-          //     component: email,
-          //     meta: { title: "绑定邮箱" },
-          //   }
-          // ]
+          meta: { title: "账号管理" }
         },
         {
           path: '/info/email',
@@ -70,7 +66,41 @@ export default new Router({
           meta: { title: "账号权限" }
 
         },
+        // {
+        //   path: '/topic_verify',
+        //   name: 'topic_verify',
+        //   component: topic_verify,
+        //   meta: { title: "帖子审核" },
+        // },
+        // {
+        //   path: '/topic_settop',
+        //   name: 'topic_settop',
+        //   component: topic_settop,
+        //   meta: { title: "全部帖子" },
+        // },
+      
       ]
+    },
+    {
+      path: '/topic',
+      name: 'topic',
+      meta: { title: "帖子管理" },
+     
+      children:[
+        {
+          path: '/topic_verify',
+          name: 'topic_verify',
+          component: topic_verify,
+          meta: { title: "帖子审核" },
+        },
+        {
+          path: '/topic_settop',
+          name: 'topic_settop',
+          component: topic_settop,
+          meta: { title: "全部帖子" },
+        },
+      ]
+      
     },
     {
       path: '/about',

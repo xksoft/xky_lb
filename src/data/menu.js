@@ -1,12 +1,6 @@
 export let menu = {
     menusList: [
-        // {
-        //     title: '个人中心',
-        //     name: 'home',
-        //     path: '/home',
-        //     icon: 'md-home',
-        //     id: '001'
-        // },
+        
         {
             title: '个人中心',
             name: 'home',
@@ -36,12 +30,28 @@ export let menu = {
                 },
             ]
         },
-        // {
-        //     title: '账单',
-        //     name: 'wqeqw',
-        //     id: '006',
-        //     path: '/',
-        // }
+        {
+            title: '帖子管理',
+            name: 'topic',
+            id: '006',
+            path: '/topic',
+            children:[
+                {
+                    title: '帖子审核',
+                    name: 'topic_verify',
+                    path: '/topic_verify',
+                    // icon: 'ios-contact',
+                    id: '007'
+                },
+                {
+                    title: '全部帖子',
+                    name: 'topic_settop',
+                    path: '/topic_settop',
+                    // icon: 'ios-contact',
+                    id: '008'
+                },
+            ]
+        }
       
     ]
 }
