@@ -66,27 +66,6 @@ export default new Router({
           meta: { title: "账号权限" }
 
         },
-        // {
-        //   path: '/topic_verify',
-        //   name: 'topic_verify',
-        //   component: topic_verify,
-        //   meta: { title: "帖子审核" },
-        // },
-        // {
-        //   path: '/topic_settop',
-        //   name: 'topic_settop',
-        //   component: topic_settop,
-        //   meta: { title: "全部帖子" },
-        // },
-      
-      ]
-    },
-    {
-      path: '/topic',
-      name: 'topic',
-      meta: { title: "帖子管理" },
-     
-      children:[
         {
           path: '/topic_verify',
           name: 'topic_verify',
@@ -99,9 +78,30 @@ export default new Router({
           component: topic_settop,
           meta: { title: "全部帖子" },
         },
-      ]
       
+      ]
     },
+    // {
+    //   path: '/topic',
+    //   name: 'topic',
+    //   meta: { title: "帖子管理" },
+     
+    //   children:[
+    //     {
+    //       path: '/topic/topic_verify',
+    //       name: 'topic_verify',
+    //       component: topic_verify,
+    //       meta: { title: "帖子审核" },
+    //     },
+    //     {
+    //       path: '/topic/topic_settop',
+    //       name: 'topic_settop',
+    //       component: topic_settop,
+    //       meta: { title: "全部帖子" },
+    //     },
+    //   ]
+      
+    // },
     {
       path: '/about',
       name: 'about',
