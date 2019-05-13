@@ -50,7 +50,7 @@
                         h('span', '置顶帖子'),
                         h('Badge', {
                             props: {
-                                count: 5
+                                count: 0
                             }
                         })
                     ])
