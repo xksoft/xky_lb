@@ -16,7 +16,7 @@
                 </Table>
             </div>
             <div class="page">
-                <Page :total="100" show-sizer />
+                <Page :total="100" show-sizer :current="1" @on-change="pagedanl"/>
             </div>
         </TabPane>
         <TabPane :label="label1" name="name2">
@@ -32,12 +32,12 @@
                 </Table>
             </div>
             <div class="page">
-                <Page :total="100" show-sizer />
+                <Page :total="100" show-sizer :current="1"  @on-change="pagedanl"/>
             </div>
         </TabPane>
         <TabPane :label="label2" name="name3">
             <div class="table">
-                <Table min-height="700" border :columns="post" :data="postlist">
+                <Table min-height="700" border :columns="1" :data="postlist">
                     <template slot-scope="{ row }" slot="id">
                         <strong>{{ row.id }}</strong>
                     </template>
@@ -51,7 +51,7 @@
                 </Table>
             </div>
             <div class="page">
-                <Page :total="100" show-sizer />
+                <Page :total="100" show-sizer :current="1"  @on-change="pagedanl"/>
             </div>
         </TabPane>
         <TabPane :label="label3" name="name4">
@@ -69,7 +69,7 @@
                 </Table>
             </div>
             <div class="page">
-                <Page :total="100" show-sizer />
+                <Page :total="100" show-sizer :current="1"  @on-change="pagedanl"/>
             </div>
         </TabPane>
     </Tabs>
@@ -518,7 +518,7 @@
                     }
                 ],
                 blackholelist: [
-                     {
+                    {
                         id: '1',
                         content: '我的也会，只有一张照片，19台发送有10台出现发送失败',
                         uid:18,
@@ -584,6 +584,11 @@
                     },
                 ]
                
+            }
+        },
+        methods: {
+            pagedanl(e){
+                console.log(e)
             }
         }
     }
