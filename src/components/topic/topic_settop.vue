@@ -16,9 +16,8 @@
                 <Page :total="100" show-sizer />
             </div>
         </TabPane>
-        <TabPane :label="label1" name="name2">回复</TabPane>
-        <TabPane :label="label2" name="name3">黑洞里的帖子</TabPane>
-        <TabPane :label="label3" name="name4">黑洞里的回复</TabPane>
+        <TabPane :label="label1" name="name2"></TabPane>
+        <TabPane :label="label2" name="name3"></TabPane>
     </Tabs>
 </template>
 
@@ -28,7 +27,7 @@
             return {
                 label: (h) => {
                     return h('div', [
-                        h('span', '未审核帖子'),
+                        h('span', '全部帖子'),
                         h('Badge', {
                             props: {
                                 count: 3
@@ -38,7 +37,7 @@
                 },
                  label1: (h) => {
                     return h('div', [
-                        h('span', '回复'),
+                        h('span', '推荐帖子'),
                         h('Badge', {
                             props: {
                                 count: 0
@@ -48,7 +47,7 @@
                 },
                  label2: (h) => {
                     return h('div', [
-                        h('span', '黑洞里的帖子'),
+                        h('span', '置顶帖子'),
                         h('Badge', {
                             props: {
                                 count: 5
@@ -56,16 +55,7 @@
                         })
                     ])
                 },
-                 label3: (h) => {
-                    return h('div', [
-                        h('span', '黑洞里的回复'),
-                        h('Badge', {
-                            props: {
-                                count: 0
-                            }
-                        })
-                    ])
-                },
+                
                 columns: [
                     {
                         title: 'ID',
@@ -182,6 +172,20 @@
                 ]
                
             }
+        },
+        methods: {
+            get_topic_no_blackhole_all(){
+                    this.axios.post('/api/xiake/topic/get_topic_no_blackhole_all').then((response) =>  {
+                        // if (response.status===200) {
+                            console.log(response)
+                        // }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                },
+        },
+        created(){
+            this.get_topic_no_blackhole_all()
         }
     }
 </script>
